@@ -1,0 +1,43 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+# -   repo: https://github.com/psf/black
+#     rev: 24.4.2
+#     hooks:
+#     -   id: black
+-   repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+    -   id: isort
+-   repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+    -   id: flake8
+        exclude: migrations
+        additional_dependencies:
+        -   flake8-bugbear
+        -   flake8-tidy-imports
+        -   flake8-import-order
+        -   flake8-coding
+        -   flake8-polyfill
+        -   flake8-quotes
+-   repo: https://github.com/codespell-project/codespell
+    # Configuration for codespell is in .codespellrc
+    rev: v2.2.6
+    hooks:
+    -   id: codespell
+        exclude: locale|kickstarter-announcement.md|coreapi-0.1.1.js
+-   repo: https://github.com/google/yapf
+    rev: v0.40.2
+    hooks:
+    -   id: yapf
+        additional_dependencies: [toml]
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.10.0'  # Use the sha / tag you want to point at
+    hooks:
+    -   id: mypy
+        additional_dependencies: [ types-requests, types-PyYAML, types-toml ]

@@ -1,9 +1,10 @@
+from typing import List
+
 SECRET_KEY = NotImplemented
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS: List[str] = ['*']
 
 # Application definition
 
@@ -14,6 +15,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # local
+    'rest_framework',
+    'cooking_core.accounts.apps.AccountsConfig',
+    'cooking_core.general.apps.GeneralConfig'
 ]
 
 MIDDLEWARE = [
@@ -26,7 +32,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'core.project.urls'
+ROOT_URLCONF = 'cooking_core.project.urls'
+
+AUTH_USER_MODEL = 'accounts.User'
 
 TEMPLATES = [
     {
@@ -44,19 +52,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.project.wsgi.application'
-
+WSGI_APPLICATION = 'cooking_core.project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/nikhil0162/django/Core-Tutorials/db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_core_tutorial',
+        'USER': 'postgres2',
+        'PASSWORD': 'qwerty123321',
+        'HOST': 'localhost',
+        'PORT': '5434',
+        'ATOMIC_REQUESTS': True,
+        'CONN_MAX_AGE': 600
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -76,7 +88,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -87,7 +98,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

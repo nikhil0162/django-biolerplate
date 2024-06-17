@@ -1,9 +1,10 @@
 [flake8]
 ignore = C101,D403,F403,F405,I100,I201,W503,W504
-exclude = 
+exclude =
     .git,
     __pycache__,
-    .venv
+    .venv,
+    migrations
 filename = *.py
 accept-encoding = utf-8
 inline-quotes = single
