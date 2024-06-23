@@ -64,7 +64,7 @@ DATABASES = {
         'USER': 'postgres2',
         'PASSWORD': 'qwerty123321',
         'HOST': 'localhost',
-        'PORT': '5434',
+        'PORT': '5432',
         'ATOMIC_REQUESTS': True,
         'CONN_MAX_AGE': 600
     }
